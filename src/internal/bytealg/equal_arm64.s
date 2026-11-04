@@ -114,10 +114,9 @@ chunk64_loop:
 	VAND	V23.B16, V24.B16, V23.B16
 	VAND	V21.B16, V23.B16, V21.B16
 	CMP	R0, R26
-	VMOV	V21.D[0], R16
-	VMOV	V21.D[1], R17
+	VUMINV	V21.B16, V21
+	VMOV	V21.B[0], R16
 	CBZ	R16, not_equal
-	CBZ	R17, not_equal
 	BNE	chunk64_loop
 	AND	$0x3f, R2, R2
 	CBZ	R2, equal
